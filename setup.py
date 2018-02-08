@@ -242,7 +242,10 @@ def find_platform_sdk_dir():
     for sdk_key in sdks_keys:
         key = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE,
                               r"Software\Microsoft\Microsoft SDKs\Windows\%s" % sdk_key )
-        sdkdir, ignore = _winreg.QueryValueEx(key, "InstallationFolder")
+        try:
+            sdkdir, ignore = _winreg.QueryValueEx(key, "InstallationFolder")
+        except:
+            continue
         if DEBUG:
             print r"PSDK: try 'HKLM\Software\Microsoft\Microsoft SDKs"\
                    "\Windows\%s\InstallationFolder': '%s'" %(sdk_key, sdkdir)
