@@ -1,6 +1,7 @@
 image:
 - Visual Studio 2017
 platform:
+- x86
 - x64
 
 environment:
@@ -8,43 +9,43 @@ environment:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
     - PYTHON_PATH: "C:\\Python27"
-      WIN_ARCH: x86
+      platform: x86
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python27-x64"
-      WIN_ARCH: amd64
+      platform: x64
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python33"
-      WIN_ARCH: x86
+      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python33-x64"
-      WIN_ARCH: amd64
+      platform: x64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python34"
-      WIN_ARCH: x86
+      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python34-x64"
-      WIN_ARCH: amd64
+      platform: x64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python35"
-      WIN_ARCH: x86
+      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - PYTHON_PATH: "C:\\Python35-x64"
-      WIN_ARCH: amd64
+      platform: x64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - PYTHON_PATH: "C:\\Python36"
-      WIN_ARCH: x86
+      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - PYTHON_PATH: "C:\\Python36-x64"
-      WIN_ARCH: amd64
+      platform: x64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
@@ -59,11 +60,11 @@ install:
   - pip install setuptools wheel
 
 init:
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" if "%WIN_ARCH%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" if "%WIN_ARCH%"=="amd64" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%WIN_ARCH%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
-  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%WIN_ARCH%"=="amd64" call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
-#  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%WIN_ARCH%"=="amd64" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" if "%platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" if "%platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
+  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%platform%"=="x64" call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64
+#  - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
 
 build_script:
   - if "%PYTHON_MAJOR%"=="2" python setup.py build
