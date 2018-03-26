@@ -7,35 +7,45 @@ environment:
     # http://www.appveyor.com/docs/installed-software#python
     - PYTHON: "C:\\Python27"
       WIN_ARCH: "x86"
+      MSSDK_ARCH: "x86"
       SETUP_PY: "setup.py"
       image: Visual Studio 2015
     - PYTHON: "C:\\Python27-x64"
       WIN_ARCH: "amd64"
+      MSSDK_ARCH: "x64"
       SETUP_PY: "setup.py"
       image: Visual Studio 2015
     - PYTHON: "C:\\Python33"
       WIN_ARCH: "x86"
+      MSSDK_ARCH: "x86"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python33-x64"
       WIN_ARCH: "amd64"
+      MSSDK_ARCH: "x64"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python34"
       WIN_ARCH: "x86"
+      MSSDK_ARCH: "x86"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python34-x64"
       WIN_ARCH: "amd64"
+      MSSDK_ARCH: "x64"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python35"
       WIN_ARCH: "x86"
+      MSSDK_ARCH: "x86"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python35-x64"
       WIN_ARCH: "amd64"
+      MSSDK_ARCH: "x64"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python36"
       WIN_ARCH: "x86"
+      MSSDK_ARCH: "x86"
       SETUP_PY: "setup3.py"
     - PYTHON: "C:\\Python36-x64"
       WIN_ARCH: "amd64"
+      MSSDK_ARCH: "x64"
       SETUP_PY: "setup3.py"
 
 install:
@@ -49,6 +59,7 @@ install:
   - "pip install setuptools wheel"
 
 build_script:
+  - "CALL \"C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\Bin\\SetEnv.cmd\" /%MSSDK_ARCH%"
   - "CALL \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat\" %WIN_ARCH%"
   - "%PYTHON%\\python.exe %SETUP_PY% build"
 
