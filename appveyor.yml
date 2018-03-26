@@ -7,56 +7,56 @@ environment:
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
-    - PYTHON: "C:\\Python27"
+    - PYTHON_PATH: "C:\\Python27"
       WIN_ARCH: x86
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - PYTHON: "C:\\Python27-x64"
+    - PYTHON_PATH: "C:\\Python27-x64"
       WIN_ARCH: amd64
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - PYTHON: "C:\\Python33"
+    - PYTHON_PATH: "C:\\Python33"
       WIN_ARCH: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python33-x64"
+    - PYTHON_PATH: "C:\\Python33-x64"
       WIN_ARCH: amd64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python34"
+    - PYTHON_PATH: "C:\\Python34"
       WIN_ARCH: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python34-x64"
+    - PYTHON_PATH: "C:\\Python34-x64"
       WIN_ARCH: amd64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python35"
+    - PYTHON_PATH: "C:\\Python35"
       WIN_ARCH: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python35-x64"
+    - PYTHON_PATH: "C:\\Python35-x64"
       WIN_ARCH: amd64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python36"
+    - PYTHON_PATH: "C:\\Python36"
       WIN_ARCH: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON: "C:\\Python36-x64"
+    - PYTHON_PATH: "C:\\Python36-x64"
       WIN_ARCH: amd64
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 install:
   # Prepare environment
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "SET PATH=%PYTHON_PATH%;%PYTHON_PATH%\\Scripts;%PATH%"
 
   # Check that we have the expected version and architecture for Python
-  - "%PYTHON%\\python.exe --version"
+  - %PYTHON_PATH%\python.exe --version
 
   # Install setuptools/wheel so that we can e.g. use bdist_wheel
-  - "pip install setuptools wheel"
+  - pip install setuptools wheel
 
 init:
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" if "%WIN_ARCH%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
@@ -66,8 +66,8 @@ init:
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" if "%WIN_ARCH%"=="amd64" call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
 build_script:
-  - if "%PYTHON_MAJOR%"=="2" %PYTHON%\python.exe setup.py build
-  - if "%PYTHON_MAJOR%"=="3" %PYTHON%\python.exe setup3.py build
+  - if "%PYTHON_MAJOR%"=="2" python setup.py build
+  - if "%PYTHON_MAJOR%"=="3" python setup3.py build
 
 test_script:
   # Put your test command here.
@@ -77,15 +77,15 @@ test_script:
   # Note that you must use the environment variable %PYTHON% to refer to
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
-  - if "%PYTHON_MAJOR%"=="2" %PYTHON%\python.exe pywin32_testall.py
+  - if "%PYTHON_MAJOR%"=="2" %PYTHON_PATH%\python.exe pywin32_testall.py
 
 after_test:
   # This step builds your wheels.
   # Again, you only need build.cmd if you're building C extensions for
   # 64-bit Python 3.3/3.4. And you need to use %PYTHON% to get the correct
   # interpreter
-  - if "%PYTHON_MAJOR%"=="2" %PYTHON%\python.exe setup.py bdist_wheel
-  - if "%PYTHON_MAJOR%"=="3" %PYTHON%\python.exe setup3.py bdist_wheel
+  - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wheel
+  - if "%PYTHON_MAJOR%"=="3" python setup3.py bdist_wheel
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
