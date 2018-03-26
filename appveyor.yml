@@ -9,23 +9,18 @@ environment:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
     - PYTHON_PATH: "C:\\Python27"
-      platform: x86
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python33"
-      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python34"
-      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python35"
-      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
     - PYTHON_PATH: "C:\\Python36"
-      platform: x86
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
