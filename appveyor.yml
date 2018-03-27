@@ -8,9 +8,12 @@ environment:
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
-    - PYTHON_PATH: "C:\\Python27"
+    - PYTHON_PATH: "C:\\Python26"
       PYTHON_MAJOR: 2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    - PYTHON_PATH: "C:\\Python27"
+      PYTHON_MAJOR: 2
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_PATH: "C:\\Python33"
       PYTHON_MAJOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
