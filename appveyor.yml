@@ -49,10 +49,10 @@ init:
   - if "%PYTHON_MAJOR%"=="3" if "%PYTHON_MINOR%"=="4" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64
   - if "%PYTHON_MAJOR%"=="3" if "%PYTHON_MINOR%"=="3" if "%Platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86
   - if "%PYTHON_MAJOR%"=="3" if "%PYTHON_MINOR%"=="3" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64
-  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" if "%Platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\vcvarsall.bat" x86
-  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\vcvarsall.bat" amd64 
-  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\vcvarsall.bat" x86
-  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\vcvarsall.bat" amd64 
+  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" if "%Platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86
+  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" amd64 
+  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x86" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86
+  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" amd64 
 
   # RDP session for debugging
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
