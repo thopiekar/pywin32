@@ -55,8 +55,8 @@ init:
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
-  - if "%PYTHON_MAJOR%"=="2" python setup.py build --inplace 
-  - if "%PYTHON_MAJOR%"=="3" python setup3.py build --inplace 
+  - if "%PYTHON_MAJOR%"=="2" python setup.py build 
+  - if "%PYTHON_MAJOR%"=="3" python setup3.py build 
 
 test_script:
   # Put your test command here.
