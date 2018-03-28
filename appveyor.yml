@@ -3,7 +3,7 @@ platform:
 - x64
 
 environment:
-  APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
+  #APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
@@ -55,7 +55,7 @@ init:
   - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x64" call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" amd64 
 
   # RDP session for debugging
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
   - if "%PYTHON_MAJOR%"=="2" python setup.py build
@@ -91,6 +91,6 @@ artifacts:
 #  See Appveyor's documentation for more details. Or you can simply
 #  access your wheels from the Appveyor "artifacts" tab for your build.
 
-on_finish:
+#on_finish:
   # RDP session for debugging
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
