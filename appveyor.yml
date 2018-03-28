@@ -75,9 +75,9 @@ after_test:
   # interpreter
   - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" python setup.py sdist
   - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wheel --skip-build
-  - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wininst --skip-build
+  - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wininst --skip-build --target-version=%PYTHON_MAJOR%.%PYTHON_MINOR%
   - if "%PYTHON_MAJOR%"=="3" python setup3.py bdist_wheel --skip-build
-  - if "%PYTHON_MAJOR%"=="3" python setup3.py bdist_wininst --skip-build
+  - if "%PYTHON_MAJOR%"=="3" python setup3.py bdist_wininst --skip-build --target-version=%PYTHON_MAJOR%.%PYTHON_MINOR%
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
