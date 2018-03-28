@@ -3,7 +3,7 @@ platform:
 - x64
 
 environment:
-  #APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
+  APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
