@@ -37,7 +37,8 @@ install:
   - python --version
 
   # Install setuptools/wheel so that we can e.g. use bdist_wheel
-  - python -m pip install setuptools wheel
+  - pip install --upgrade pip
+  - pip install --upgrade setuptools wheel
 
 init:
   # Following the matrix here: https://wiki.python.org/moin/WindowsCompilers#Which_Microsoft_Visual_C.2B-.2B-_compiler_to_use_with_a_specific_Python_version_.3F
