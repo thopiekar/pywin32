@@ -1121,7 +1121,9 @@ class my_build_ext(build_ext):
             val, val_typ = _winreg.QueryValueEx(vckey, "ProductDir")
             mfc_dir = os.path.join(val, "redist", plat_dir, mfc_dir)
             if not os.path.isdir(mfc_dir):
-                raise RuntimeError("Can't find the redist dir at %r" % (mfc_dir))
+                print "WARNING: Can't find the redist dir at %r" % (mfc_dir)
+                print "Skipping to ship them with our distributions!"
+		return
             for f in mfc_files:
                 shutil.copyfile(
                         os.path.join(mfc_dir, f), os.path.join(target_dir, f))
