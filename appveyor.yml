@@ -58,8 +58,8 @@ init:
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 build_script:
-  - if "%PYTHON_MAJOR%"=="2" python setup.py build
-  - if "%PYTHON_MAJOR%"=="3" python setup3.py build
+  - if "%PYTHON_MAJOR%"=="2" python setup.py build --inplace 
+  - if "%PYTHON_MAJOR%"=="3" python setup3.py build --inplace 
 
 test_script:
   # Put your test command here.
@@ -69,8 +69,7 @@ test_script:
   # Note that you must use the environment variable %PYTHON% to refer to
   # the interpreter you're using - Appveyor does not do anything special
   # to put the Python version you want to use on PATH.
-  #- if "%PYTHON_MAJOR%"=="2" python pywin32_testall.py
-  - ECHO "TODO: Add a test script here!"
+  - if "%PYTHON_MAJOR%"=="2" python pywin32_testall.py
 
 after_test:
   # This step builds your wheels.
