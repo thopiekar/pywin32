@@ -6,29 +6,31 @@ environment:
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
-    - PYTHON_PATH: "C:\\Python26"
-      PYTHON_MAJOR: 2
+    - PYTHON_MAJOR: 2
+      PYTHON_MINOR: 6
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-    - PYTHON_PATH: "C:\\Python27"
-      PYTHON_MAJOR: 2
+    - PYTHON_MAJOR: 2
+      PYTHON_MINOR: 7
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - PYTHON_PATH: "C:\\Python33"
-      PYTHON_MAJOR: 3
+    - PYTHON_MAJOR: 3
+      PYTHON_MINOR: 3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - PYTHON_PATH: "C:\\Python34"
-      PYTHON_MAJOR: 3
+    - PYTHON_MAJOR: 3
+      PYTHON_MINOR: 4
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    - PYTHON_PATH: "C:\\Python35"
-      PYTHON_MAJOR: 3
+    - PYTHON_MAJOR: 3
+      PYTHON_MINOR: 5
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-    - PYTHON_PATH: "C:\\Python36"
-      PYTHON_MAJOR: 3
+    - PYTHON_MAJOR: 3
+      PYTHON_MINOR: 6
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 install:
   # Prepare environment
-  - if "%Platform%"=="x86" set PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%
-  - if "%Platform%"=="x64" set PATH=%PYTHON_PATH%-x64;%PYTHON_PATH%-x64\Scripts;%PATH%
+  - set PYTHON_PATH="C:\\Python%PYTHON_MAJOR%%PYTHON_MINOR%"
+  - if "%Platform%"=="x64" set PYTHON_PATH=%PYTHON_PATH%-x64
+  - echo Using installation path at: %PYTHON_PATH%
+  - set PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH
 
   # Check that we have the expected version and architecture for Python
   - python --version
@@ -63,7 +65,7 @@ after_test:
   # Again, you only need build.cmd if you're building C extensions for
   # 64-bit Python 3.3/3.4. And you need to use %PYTHON% to get the correct
   # interpreter
-  - if "%PYTHON_MAJOR%"=="2" python setup.py sdist
+  - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="7" python setup.py sdist
   - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wheel
   - if "%PYTHON_MAJOR%"=="2" python setup.py bdist_wininst
   - if "%PYTHON_MAJOR%"=="3" python setup3.py bdist_wheel
