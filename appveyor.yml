@@ -7,9 +7,10 @@ environment:
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
-    - PYTHON_MAJOR: 2
-      PYTHON_MINOR: 6
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    # -> Python 2.6: After updating the wheels module, we get syntax errors.
+    #- PYTHON_MAJOR: 2
+    #  PYTHON_MINOR: 6
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
     - PYTHON_MAJOR: 2
       PYTHON_MINOR: 7
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
