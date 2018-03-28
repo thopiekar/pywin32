@@ -3,6 +3,7 @@ platform:
 - x64
 
 environment:
+  APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
   matrix:
     # For Python versions available on Appveyor, see
     # http://www.appveyor.com/docs/installed-software#python
@@ -53,6 +54,9 @@ init:
   - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x86" call "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\vcvarsall.bat" x86
   - if "%PYTHON_MAJOR%"=="2" if "%PYTHON_MINOR%"=="6" if "%Platform%"=="x64" call "C:\Users\appveyor\AppData\Local\Programs\Common\Microsoft\Visual C++ for Python\9.0\vcvarsall.bat" amd64 
 
+  # RDP session for debugging
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 build_script:
   - if "%PYTHON_MAJOR%"=="2" python setup.py build
   - if "%PYTHON_MAJOR%"=="3" python setup3.py build
@@ -86,3 +90,7 @@ artifacts:
 #  You can use this step to upload your artifacts to a public website.
 #  See Appveyor's documentation for more details. Or you can simply
 #  access your wheels from the Appveyor "artifacts" tab for your build.
+
+on_finish:
+  # RDP session for debugging
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
