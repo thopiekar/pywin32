@@ -27,8 +27,8 @@ environment:
 
 install:
   # Prepare environment
-  - set PYTHON_PATH="C:\Python%PYTHON_MAJOR%%PYTHON_MINOR%"
-  - if "%Platform%"=="x64" set PYTHON_PATH="%PYTHON_PATH%-x64"
+  - set PYTHON_PATH=C:\Python%PYTHON_MAJOR%%PYTHON_MINOR%
+  - if "%Platform%"=="x64" set PYTHON_PATH=%PYTHON_PATH%-x64
   - echo %PYTHON_PATH%
   - set PATH=%PYTHON_PATH%;%PYTHON_PATH%\Scripts;%PATH%
 
