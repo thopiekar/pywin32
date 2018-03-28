@@ -1123,7 +1123,7 @@ class my_build_ext(build_ext):
             if not os.path.isdir(mfc_dir):
                 print "WARNING: Can't find the redist dir at %r" % (mfc_dir)
                 print "Skipping to ship them with our distributions!"
-		return
+                return
             for f in mfc_files:
                 shutil.copyfile(
                         os.path.join(mfc_dir, f), os.path.join(target_dir, f))
