@@ -37,6 +37,10 @@ install:
 
   # Install setuptools/wheel so that we can e.g. use bdist_wheel
   - pip install --upgrade setuptools wheel
+  
+  ## Use Chocolatey to install SWIG.
+  - set SWIG_EXECUTABLE=C:\ProgramData\chocolatey\bin\swig.exe
+  - IF NOT EXIST %SWIG_EXECUTABLE% choco install swig --version 3.0.9 --yes --limit-output
 
 init:
   # Following the matrix here: https://wiki.python.org/moin/WindowsCompilers#Which_Microsoft_Visual_C.2B-.2B-_compiler_to_use_with_a_specific_Python_version_.3F
