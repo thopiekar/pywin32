@@ -2,6 +2,9 @@ platform:
 - x86
 - x64
 
+image:
+- Visual Studio 2015
+
 environment:
   #APPVEYOR_RDP_PASSWORD: 7A4hcPlOZ2UhEiUk5cVx
   matrix:
@@ -10,22 +13,17 @@ environment:
     # -> Python 2.6: After updating the wheels module, we get syntax errors.
     #- PYTHON_MAJOR: 2
     #  PYTHON_MINOR: 6
-    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013 # Can be used to override the image, which shall be used.
     - PYTHON_MAJOR: 2
       PYTHON_MINOR: 7
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 3
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 4
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 5
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 6
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Prepare environment
