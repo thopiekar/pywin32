@@ -10,10 +10,20 @@ the old project home at [sourceforge](https://sourceforge.net/projects/pywin32/)
 
 A special shout-out to @xoviat who provided enormous help with the github move!
 
+## Support
+
+Feel free to [open issues](https://github.com/mhammond/pywin32/issues) for
+all bugs (or suspected bugs) in pywin32. [pull-requests](https://github.com/mhammond/pywin32/pulls)
+for all bugs or features are also welcome.
+
+However, please **do not open github issues for general support requests**, or
+for problems or questions using the modules in this package - they will be
+closed. For such issues, please email the
+[python-win32 mailing list](http://mail.python.org/mailman/listinfo/python-win32) -
+note that you must be subscribed to the list before posting.
+
 ## Binaries
 By far the easiest way to use pywin32 is to grab binaries from the [most recent release](https://github.com/mhammond/pywin32/releases)
-
-Feel free to [open issues](https://github.com/mhammond/pywin32/issues) or [pull-requests](https://github.com/mhammond/pywin32/pulls)
 
 ## Installing via PIP
 
@@ -22,15 +32,11 @@ Note that PIP support is experimental.
 You can install pywin32 via pip:
 > pip install pywin32
 
-However, you almost certainly need to execute:
+Note that if you want to use pywin32 for "system wide" features, such as
+registering COM objects or implementing Windows Services, then you must run
+the following command from an elevated command prompt:
+
 > python Scripts/pywin32_postinstall.py -install
-
-after installation, or you will see various ImportErrors importing core
-modules.
-
-Note that if you want to use pywin32 for "system wide" features, such as COM
-objects or Windows Services, then you must run the above command from an
-elevated command prompt.
 
 ## Building from source
 Building from source is extremely complicated due to the fact we support building

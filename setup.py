@@ -1,4 +1,4 @@
-build_id="222.1" # may optionally include a ".{patchno}" suffix.
+build_id="223.1" # may optionally include a ".{patchno}" suffix.
 # Putting buildno at the top prevents automatic __doc__ assignment, and
 # I *want* the build number at the top :)
 __doc__="""This is a distutils setup-script for the pywin32 extensions
@@ -343,7 +343,14 @@ if sys.version_info > (2,6):
 
 sdk_dir = find_platform_sdk_dir()
 if not sdk_dir:
-    raise RuntimeError("Can't find the Windows SDK")
+  print
+  print "It looks like you are trying to build pywin32 in an environment without"
+  print "the necessary tools installed. It's much easier to grab binaries!"
+  print
+  print "Please read the docstring at the top of this file, or read README.md"
+  print "for more information."
+  print
+  raise RuntimeError("Can't find the Windows SDK")
 
 class WinExt (Extension):
     # Base class for all win32 extensions, with some predefined
