@@ -20,10 +20,10 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 5
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
     - PYTHON_MAJOR: 3
       PYTHON_MINOR: 6
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Prepare environment
