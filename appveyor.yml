@@ -39,8 +39,8 @@ install:
   - pip install --upgrade setuptools wheel
   
   ## Use Chocolatey to install SWIG.
-  - set SWIG=C:\ProgramData\chocolatey\bin\swig.exe
-  - if not exist %SWIG% choco install swig --version 3.0.9 --yes --limit-output
+  #- set SWIG=C:\ProgramData\chocolatey\bin\swig.exe
+  #- if not exist %SWIG% choco install swig --version 3.0.9 --yes --limit-output
 
 init:
   # Following the matrix here: https://wiki.python.org/moin/WindowsCompilers#Which_Microsoft_Visual_C.2B-.2B-_compiler_to_use_with_a_specific_Python_version_.3F
