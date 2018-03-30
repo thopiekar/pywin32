@@ -1,4 +1,6 @@
 # Originally by Thomas Heller, started in 2000 or so.
+from version import build_id
+
 import os, string, sys
 import types, glob
 import re
