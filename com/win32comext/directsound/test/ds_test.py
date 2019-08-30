@@ -258,7 +258,15 @@ class DirectSoundTest(unittest.TestCase):
         
     def testCreate(self):
         '''DirectSoundCreate()'''
-        d = ds.DirectSoundCreate(None, None)
+        try:
+            d = ds.DirectSoundCreate(None, None)
+        except pywintypes.com_error as exc:
+            print("exc.args: {}".format(exc.args))
+            print("exc.hresult: {}".format(exc.hresult))
+            print("exc.strerror: {}".format(exc.strerror))
+            print("exc.argerror: {}".format(exc.argerror))
+            print("exc.excepinfo: {}".format(exc.excepinfo))
+            raise exec
 
     def testPlay(self):
         '''Mesdames et Messieurs, la cour de Devin Dazzle'''
