@@ -72,7 +72,6 @@ test_script:
   - python setup.py install --user
   - if "%PYTHON_MAJOR%"=="2" python %PYTHONUSERBASE%\Scripts\pywin32_testall.py -no-user-interaction
   - if "%PYTHON_MAJOR%"=="3" python %PYTHONUSERBASE%\Python%PYTHON_MAJOR%%PYTHON_MINOR%\Scripts\pywin32_testall.py -no-user-interaction
-  - if %errorlevel% GTR 0 exit %errorlevel%
   - set PYTHONUSERBASE=
   - rmdir %PYTHONUSERBASE% /s /q
 
