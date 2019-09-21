@@ -32,6 +32,7 @@ if hasattr(os, 'popen3'):
             result = stderr.close()
             if result is not None:
                 print "****** %s failed: %s" % (script, result)
+                exit(1)
         finally:
             os.chdir(cwd)
 else:
@@ -50,6 +51,7 @@ else:
         sys.stdout.buffer.write(data)
         if popen.returncode:
             print "****** %s failed: %s" % (script, popen.returncode)
+            exit(popen.returncode)
 
 
 def find_and_run(possible_locations, script, cmdline_rest=""):
